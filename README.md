@@ -1,0 +1,1 @@
+# spa-graph-msal
