@@ -40,7 +40,8 @@
 
   <div class="container">
     <div id="qrcode"></div>
-    <a href="/.auth/loginAAD">Login with Azure AD</a>
+    <a href="/.auth/login/aad">Login with Azure AD</a> <br />
+    <pre id=api></pre>
   </div>
 
 
@@ -79,6 +80,23 @@
       colorLight: "#ffffff",
       correctLevel: QRCode.CorrectLevel.H
     });
+
+    async function getApiResult(url) {
+      try {
+        const response = await fetch(url);
+        const pre = document.getElementById('api');
+        if (response.ok && response.status === 200) {
+          const user = await response.json();
+          console.log("Got json");
+          pre.textContent = JSON.stringify(user, null, 2);
+        } else {
+          pre.textContent = "error: " + response.statusText;
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    getApiResult('/.auth/me');
 
   </script>
 </body>
