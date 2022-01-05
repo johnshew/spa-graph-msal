@@ -105,12 +105,6 @@ function showWelcomeMessage(user) {
       'Use the navigation bar at the top of the page to get started.');
     container.appendChild(callToAction);
 
-    // Show a sign in button in the jumbotron
-    let signOutButton = createElement('button', 'btn btn-primary btn-large',
-      'Click here to sign out');
-    signInButton.setAttribute('onclick', 'signOut();')
-    container.appendChild(signOutButton);
-
   } else {
     // Show a sign in button in the jumbotron
     let signInButton = createElement('button', 'btn btn-primary btn-large',
