@@ -21,8 +21,8 @@ if (account) {
 async function signIn() {
   // Login
   try {
-    // Use MSAL to login
-    const authResult = await msalClient.loginPopup(msalRequest);
+    authResult = await msalClient.ssoSilent({}).catch((e)=>{});
+    if (!authResult) authResult = await msalClient.loginPopup(msalRequest);
     console.log('id_token acquired at: ' + new Date().toString());
 
     msalClient.setActiveAccount(authResult.account);
